@@ -17,7 +17,7 @@ process.stdin.on('end', _ => {
 
 function count(rating) {
     if (rating.length < 3) {
-        return count;
+        return 0;
     }
 
     const len = rating.length;
@@ -25,14 +25,14 @@ function count(rating) {
     let dpd = new Array(len).fill(0);
     let count = 0;
 
-    for(let i = 0; i < len; i++){
-        for(let j = i; j >= 0; j--){
-            if(rating[i] > rating[j]){
+    for (let i = 0; i < len; i++) {
+        for (let j = i; j >= 0; j--) {
+            if (rating[i] > rating[j]) {
                 dpi[i]++;
                 count = count + dpi[j];
             }
 
-            if(rating[i] < rating[j]){
+            if (rating[i] < rating[j]) {
                 dpd[i]++;
                 count = count + dpd[j];
             }
